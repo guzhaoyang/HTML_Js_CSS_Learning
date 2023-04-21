@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>幻灯片</title>
+		<style type="text/css">
+			body,ul{
+				margin: 0;
+				padding: 0;
+			}
+			#container{
+				width: 500px;
+				height: 300px;
+				margin: 100px auto;
+				background-color: gray;
+				position: relative;
+			}
+			#shows{
+				list-style: none;
+			}
+			#shows li{
+				width: 500px;
+				height: 300px;
+				display: none;
+			}
+			#shows .cur{
+				display: block;
+			}
+			#controls{
+				list-style: none;
+				position: absolute;
+				right: 5px;
+				bottom: 5px;
+			}
+			#controls li{
+				width:25px;
+				height: 25px;
+				float: left;
+				margin-left: 5px;
+				text-align: center;
+				line-height: 25px;
+				border-radius: 25px;
+				background-color: red;
+			}
+			#controls li a{
+				display: block;
+				width: 25px;
+				height: 25px;
+				text-decoration: none;
+			}
+			#controls li a:hover{
+				color: white;
+			}
+			#controls .ccur{
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<ul id="shows">
+				<li class="cur"><img src="images/500 x 300/1.jpg" /></li>
+				<li><img src="images/500 x 300/2.jpg"/></li>
+				<li><img src="images/500 x 300/3.jpg"/></li>
+				<li><img src="images/500 x 300/4.jpg"/></li>
+			</ul>
+			<ul id="controls">
+				<li class="ccur"><a href="javascript:void(0);">1</a></li>
+				<li><a href="javascript:void(0);">2</a></li>
+				<li><a href="javascript:void(0);">3</a></li>
+				<li><a href="javascript:void(0);">4</a></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var oUl1 = document.getElementById('shows');
+			var oUl2 = document.getElementById('controls');
+			var oLis1 = oUl1.getElementsByTagName('li');		//shows中li元素集合
+			var oLis2 = oUl2.getElementsByTagName('li');		//controls中li元素集合
+			var oAs = oUl2.getElementsByTagName('a');		//controls中a元素集合
+			var timer = null;
+			
+			for (var i = 0; i < oLis2.length; i++) {
+				oAs[i].index = oLis2[i].index = i;
+				//先行注册
+				oAs[i].onmouseover = function(){
+					for(var j=0; j<oLis2.length; j++){
+						oLis2[j].className = '';
+						oLis1[j].className = '';
+					}
+					oLis2[this.index].className = 'ccur';
+					oLis1[this.index].className = 'cur';
+					clearInterval(timer);
+				}
+				
+				oLis1[i].onmouseover = function(){
+					clearInterval(timer);
+				}
+				
+				oLis1[i].onmouseout = oAs[i].onmouseout = function(){
+					timer = setInterval( function(){
+						changeImg();
+					},3000);
+				}
+			}
+			
+			timer = setInterval(function(){
+						changeImg();
+					},3000);
+			
+			function changeImg(){
+				//当前显示的位置
+				var position = oUl2.getElementsByClassName('ccur')[0].index;
+				for(var j=0; j<oLis2.length;j++){
+					oLis2[j].className = '';
+					oLis1[j].className = '';
+				}
+				if(position == 3){
+					position = -1;
+				}
+				oLis2[position+1].className = 'ccur';
+				oLis1[position+1].className = 'cur';
+			}
+		</script>
+	</body>
+</html>
