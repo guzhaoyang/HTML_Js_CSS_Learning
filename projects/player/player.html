@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>音乐播放器</title>
+		<style type="text/css">
+			body{
+				background-color: #ccc;
+			}
+			body,ul{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			#container{
+				width: 800px;
+				height: 400px;
+				margin: 10px auto 0;
+			}
+			#play{
+				background-color: rgba(64,116,52,0.8);
+			}
+			#list{
+				display: none;
+				background-color: rgba(64,116,52,0.7);
+			}
+			#play,#list{
+				float: left;
+				width: 400px;
+				height: 400px;
+			}
+			#play h3{
+				text-align: center;
+			}
+			.author{
+				height: 50px;
+				padding-left: 120px;
+			}
+			.author div{
+				float: left;
+			}
+			.author div:first-child,.author div:last-child{
+				width: 30px;
+			}
+			.author hr{
+				width: 30px;
+			}
+			.name{
+				width: 100px;
+				text-align: center;
+			}
+			.photo{
+				width: 150px;
+				height: 150px;
+				margin: 0 auto;
+				border-radius: 150px;
+				background-color: red;
+			}
+			.fileName{
+				text-align: center;
+			}
+			#timeInfo{
+				width: 100%;
+				padding: 5px;
+			}
+			#timeInfo span:first-child,#timeInfo span:last-child{
+				display: inline-block;
+				float: left;
+			}
+			.process{
+				width:292px;
+				height: 5px;
+				float: left;
+				border-radius: 3px;
+				margin: 8px 8px 0;
+				background-color: gray;
+			}
+			#conBtns{
+				clear: both;
+				width: 200px;
+				margin: 5px auto;
+				background-color: red;
+			}
+			#conBtns a{
+				text-decoration: none;/*定义标准的文本。*/
+				display: block;
+				float: left;
+				margin: 0 10px;
+				padding: 3px;
+				border-radius: 5px;
+			}
+			#quickBtns{
+				clear: both;/*在左右两侧均不允许浮动元素。*/
+			}
+			#quickBtns a{
+				text-decoration: none;/*-定义标准的文本。*/
+				display: block;
+				float: left;
+				padding: 3px;
+				margin: 0 20px;
+			}
+			#list ul li{
+				padding: 5px;
+				border-bottom: 2px solid rgba(64,116,52,0.8);
+			}
+			#list ul li:hover{
+				background-color: #cbb;
+			}
+		</style>
+	</head>
+	<body>
+		<audio id="myAudio">
+			您的浏览器不支持音频播放，请升级浏览器至最新版本.
+		</audio>
+		<div id="container">
+			<div id="play">
+				<h3>歌曲名称</h3>
+				<div class="author">
+					<div><hr /></div>
+					<div class="name">作者姓名</div>
+					<div><hr /></div>
+				</div>
+				<div class="photo"></div>
+				<p class="fileName">文件名</p>
+				<div id="timeInfo">
+					<span>00:00</span>
+					<div class="process"></div>
+					<span>04:15</span>
+				</div>
+				<div id="conBtns">
+					<a href="javascript:void(0);">pre</a>
+					<a href="javascript:void(0);">play</a>
+					<a href="javascript:void(0);">next</a>
+				</div>
+				<div id="quickBtns">
+					<a href="javascript:void(0);">收藏</a>
+					<a href="javascript:void(0);">循环</a>
+					<a href="javascript:void(0);">下载</a>
+					<a href="javascript:void(0);">分享</a>
+					<a href="javascript:void(0);">列表</a>
+				</div>
+			</div>
+			<div id="list">
+				<ul>
+					<li>白月光 - 张信哲.mp3</li>
+					<li>黑色幽默（Live版） - 周杰伦.mp3</li>
+					<li>认真的雪 - 薛之谦.mp3</li>
+					<li>三寸天堂 - 严艺丹.mp3</li>
+					<li>一路上有你 - 张学友.mp3</li>
+					<li>白月光 - 张信哲.mp3</li>
+					<li>黑色幽默（Live版） - 周杰伦.mp3</li>
+					<li>认真的雪 - 薛之谦.mp3</li>
+					<li>三寸天堂 - 严艺丹.mp3</li>
+					<li>一路上有你 - 张学友.mp3</li>
+					<li>白月光 - 张信哲.mp3</li>
+					<li>黑色幽默（Live版） - 周杰伦.mp3</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var audio = document.getElementById('myAudio');
+			var oList = document.getElementById('list');
+			var oLis = document.getElementsByTagName('li');
+			var oPlay = document.getElementById('play');
+			var oSongName = oPlay.getElementsByTagName('h3')[0];
+			var oAuthor = oPlay.getElementsByClassName('name')[0];
+			var oFileName = oPlay.getElementsByClassName('file')[0];
+			
+			//播放按钮
+			var oConBtns = document.getElementById('conBtns');
+			var oABtns = oConBtns.getElementsByTagName('a');
+			
+			
+			
+		</script>
+	</body>
+</html>
