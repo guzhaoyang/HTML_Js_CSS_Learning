@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>定位 子元素的高度永远占父元素高度的一半</title>
+	</head>
+	<body>
+		<div style="background-color: aqua; position: relative;">
+			<div style="background-color: red; position: absolute; height: 50%;">div子级1,该盒子已经脱离了文档流</div>
+			<div style="background-color: blue;">div子级2</div>
+			<div style="background-color: brown;">div子级3</div>
+			<div style="background-color: #333;">div子级4</div>
+			<div style="background-color: darkgoldenrod;">div子级5</div>
+			<div style="background-color: brown;">div子级6</div>
+		</div>
+	</body>
+</html>
